@@ -20,8 +20,19 @@ class SentenceTransformersEmbeddings(Embeddings):
 
 print("Loading PDF...")
 
-loader = PyPDFLoader("dsa.pdf")
-documents = loader.load()
+files = ['dsa.pdf']
+
+# loader = PyPDFLoader("dsa.pdf")
+# documents = loader.load()
+
+all_documents = [ ]
+
+for file in files:
+    loader = PyPDFLoader(file)
+    docs = loader.load()
+    all_documents.extend(docs)
+
+documents = all_documents
 
 print("Splitting documents...")
 
